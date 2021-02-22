@@ -4,36 +4,20 @@
   become: true
   tasks:
 
-  - name: update repositiry index
+  - name: uninstall apache and php packages for Ubuntu servers
     apt:
+      name: 
+        - apache2
+        - libapache2-mod-php
+      state: absent
       update_cache: yes
     when: ansible_distribution == "Ubuntu"
 
-  - name: uninstall apache and php for Ubuntu servers
-    apt:
-      name: apache2
-      state: absent
-    when: ansible_distribution == "Ubuntu"
-
-  - name: remove php support for apache
-    apt:
-      name: libapache2-mod-php
-      state: absent
-    when: ansible_distribution == "Ubuntu"
-
-  - name: update repositiry index
+  - name: uninstall apache and php packages for CentOS servers
     dnf:
+      name: 
+        - httpd
+        - php
+      state: absent
       update_cache: yes
-    when: ansible_distribution == "CentOS"
-
-  - name: remove apache and php for CentOS servers
-    dnf:
-      name: httpd
-      state: absent
-    when: ansible_distribution == "CentOS"
-
-  - name: remove php support for apache
-    dnf:
-      name: php
-      state: absent
     when: ansible_distribution == "CentOS"
