@@ -10,3 +10,5 @@ srv3.homelab.local
 [web_servers]
 srv4.homelab.local
 srv5.homelab.local
+
+[workstations]
