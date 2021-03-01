@@ -1,0 +1,8 @@
+- name: add public key for simone user
+  tags: always
+  authorized_key:
+    user: simone
+    state: present
+    key: "{{ item }}"
+  with_file:
+    - /home/ferry/.ssh/ansible.pub
